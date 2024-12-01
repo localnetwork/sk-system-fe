@@ -6,7 +6,19 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <div>
-      <h1 className="text-[red] text-[80px] font-bold">Hello, world!</h1>
+      <form action="#">
+        <div>
+          <label htmlFor="username">Username:</label>
+          <input type="text" />
+        </div>
+        <div>
+          <label htmlFor="username">Username:</label>
+          <input type="text" />
+        </div>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
     </div>
   );
 }
