@@ -4,3 +4,7 @@
 
 body {
 }
+
+.container {
+  @apply max-w-[1140px] mx-auto px-[15px];
+}
