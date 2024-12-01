@@ -8,7 +8,9 @@ export default function Home() {
     <div>
       <form action="#">
         <div>
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username" className="tesgt">
+            Username:
+          </label>
           <input type="text" />
         </div>
         <div>
