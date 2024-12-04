@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 body {
+  font-family: "Poppins", sans-serif;
+  @apply text-[#0B0B0B];
 }
 
 .container {
