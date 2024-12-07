@@ -3,10 +3,41 @@
 @tailwind utilities;
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Raleway", sans-serif;
   @apply text-[#0B0B0B];
+  --primary: #dd8022;
+  --secondary: #a2441b;
 }
 
 .container {
   @apply max-w-[1140px] mx-auto px-[15px];
+}
+
+.bg-gradient1 {
+  background: linear-gradient(180deg, #ffcb97 0%, #dd8022 100%);
+}
+
+.bg-gradient2 {
+  background: linear-gradient(180deg, #97c7f7 0%, #227fdd 100%);
+}
+
+.form-control {
+  @apply min-h-[45px] bg-[#D9D9D9] px-[15px] outline-none rounded-[10px] shadow-[inset_1px_6px_6px_1px_rgba(0,0,0,0.25)] text-[#5E5D5D] placeholder-[#5E5D5D];
+}
+
+.branding-2 {
+  --primary: #2163ac;
+  --secondary: #183453;
+}
+.bg-primary {
+  background-color: var(--primary);
+}
+.bg-secondary {
+  background-color: var(--secondary);
+}
+.text-primary {
+  color: var(--primary);
+}
+.text-secondary {
+  color: var(--secondary);
 }
