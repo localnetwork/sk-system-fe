@@ -33,7 +33,7 @@ export default function NavigationOptions() {
             <Link
               href={item?.link}
               className={`flex text-center hover:opacity-80 flex-col ${
-                router.asPath == item?.link ? "!opacity-50" : ""
+                router.asPath.includes(item?.link) ? "!opacity-50" : ""
               }`}
             >
               {item?.icon}

@@ -1,6 +1,10 @@
 import { useState } from "react";
 import EventsAdminCreate from "./EventsAdminCreate";
 import EventsAdminList from "./EventsAdminList";
+import Rewards from "@/components/forms/rewards/AddReward";
+import AddReward from "@/components/forms/rewards/AddReward";
+import Reward from "@/components/forms/rewards/Rewards";
+import MilestonePage from "@/components/forms/milestones/MilestonePage";
 
 export default function EventsAdmin() {
   const [selectedOption, setSelectedOption] = useState();
@@ -13,6 +17,14 @@ export default function EventsAdmin() {
     {
       name: "Check Existing Events",
       id: "view-events",
+    },
+    {
+      name: "Manage Rewards",
+      id: "manage-rewards",
+    },
+    {
+      name: "Manage Milestones",
+      id: "manage-milestones",
     },
   ];
 
@@ -43,23 +55,29 @@ export default function EventsAdmin() {
             />
           </svg>
         </div>
-
+        {!selectionToggle && (
+          <div className="pt-[10px] text-[#e59f3a]">
+            Click the + button to choose what to do next.
+          </div>
+        )}
         <div
-          className={`options transition ${
+          className={`options flex flex-col transition ${
             selectionToggle ? "opacity-100" : "opacity-0"
           }`}
         >
           {navOptions?.map((item, index) => {
             const isOdd = index % 2;
             return (
-              <div
-                className={`cursor-pointer ${
-                  !isOdd ? "text-secondary" : "text-primary"
-                }`}
-                key={index}
-                onClick={() => setSelectedOption(item?.id)}
-              >
-                {item?.name}
+              <div>
+                <span
+                  className={`cursor-pointer inline-block ${
+                    !isOdd ? "text-secondary" : "text-primary"
+                  }`}
+                  key={index}
+                  onClick={() => setSelectedOption(item?.id)}
+                >
+                  {item?.name}
+                </span>
               </div>
             );
           })}
@@ -70,6 +88,8 @@ export default function EventsAdmin() {
         {!selectedOption && <div></div>}
         {selectedOption === "add-event" && <EventsAdminCreate />}
         {selectedOption === "view-events" && <EventsAdminList />}
+        {selectedOption === "manage-rewards" && <Reward />}
+        {selectedOption === "manage-milestones" && <MilestonePage />}
       </div>
     </div>
   );

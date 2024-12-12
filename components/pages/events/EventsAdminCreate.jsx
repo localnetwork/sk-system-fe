@@ -18,7 +18,6 @@ export default function EventsAdminCreate() {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
 
-    console.log("file", file);
     if (file) {
       // Validate if the uploaded file is an image
       if (!file.type.startsWith("image/")) {
@@ -53,14 +52,12 @@ export default function EventsAdminCreate() {
     );
     formData.append("image", e?.target?.image?.files[0] || "");
 
-    if (!selectedImage) {
-      toast.error("Please upload an image.");
-      return;
-    }
+    // if (!selectedImage) {
+    //   toast.error("Please upload an image.");
+    //   return;
+    // }
 
     setIsLoading(true);
-
-    console.log("formData", formData);
 
     try {
       toast.dismiss(); // Clear any existing toasts
@@ -75,10 +72,16 @@ export default function EventsAdminCreate() {
           },
         }
       );
-
       toast.success("Event created successfully!");
+      e?.target?.reset(); // Reset the form after successful submission
+      setStartDate(null); // Clear startDate
+      setImagePreview(null);
+      setSelectedImage(null);
+
+      // Explicitly reset Flatpickr values
+      document.getElementById("event_start_datetime")._flatpickr.clear();
+      document.getElementById("event_end_datetime")._flatpickr.clear();
     } catch (error) {
-      console.error("Error:", error?.data?.errors);
       setErrors(error?.data?.errors);
 
       const errorMessages = error?.data?.errors?.map(
@@ -101,6 +104,9 @@ export default function EventsAdminCreate() {
 
   return (
     <div className="bg-[linear-gradient(180deg,_#FEF1D6_0%,_#DD8022_74.47%)] shadow-[1px_0px_11px_3px_#a3a3a3] rounded-[10px] mt-[50px] p-[50px] max-w-[620px]">
+      <h1 className="mb-[20px] text-[25px] mt-[-20px] text-secondary font-bold">
+        Add event
+      </h1>
       <form
         id="add-event"
         onSubmit={(e) => {
@@ -270,7 +276,7 @@ export default function EventsAdminCreate() {
                 errorsService.findError(errors, "image")
                   ? "border border-red-500"
                   : ""
-              } cursor-pointer bg-white gap-[5px] text-[#9e9e9e] flex flex-col items-center rounded-[5px] w-full px-[10px] py-[5px] min-h-[20px] relative`}
+              } h-[40px] cursor-pointer bg-white gap-[5px] text-[#9e9e9e] flex justify-center items-center rounded-[5px] w-full px-[10px] py-[5px] min-h-[20px] relative`}
             >
               <input
                 type="file"
@@ -303,13 +309,15 @@ export default function EventsAdminCreate() {
                 <img
                   src={imagePreview}
                   alt="Preview"
-                  className="w-full h-full  top-0 left-0 z-[100] object-cover rounded-md"
+                  className="w-full h-full  top-0 left-0 z-[100] object-cover rounded-md bg-black"
                 />
                 <button
                   type="button"
-                  onClick={() => {
+                  onClick={(e) => {
                     setSelectedImage(null);
                     setImagePreview(null);
+                    const input = document.getElementById("image");
+                    input.value = ""; // Clear the input value
                   }}
                   className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center"
                 >
@@ -320,7 +328,7 @@ export default function EventsAdminCreate() {
           </div>
         </div>
 
-        <div className="mt-[50px] select-none">
+        <div className="mt-[30px] select-none flex justify-end">
           <button
             type="submit"
             className="text-[#6D2D1A] px-[10px] py-[5px] rounded-[5px] bg-[linear-gradient(180deg,_#F1D396_0%,_#FFFFFF_100%)]"

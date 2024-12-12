@@ -27,7 +27,6 @@ export default function LoginForm() {
         }
       );
 
-      persistentStore.setState({ profile: res.data?.data });
       await AUTHAPI.login({
         email: email,
         password: password,
@@ -35,6 +34,7 @@ export default function LoginForm() {
       router.push("/dashboard");
       toast.success("Login successful");
       setIsLoading(false);
+      persistentStore.setState({ profile: res.data?.data });
     } catch (error) {
       console.log("Error", error);
       setErrors(error?.data?.errors);

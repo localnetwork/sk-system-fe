@@ -1,6 +1,9 @@
 import EventCalendarAdmin from "@/components/icons/EventCalendarAdmin";
 import EventCalendarMember from "@/components/icons/EventCalendarMember";
+import PopulationIcon from "@/components/icons/PopulationIcon";
 import ProgressMember from "@/components/icons/ProgressMember";
+import Stats from "@/components/icons/Stats";
+import UsersIcon from "@/components/icons/UsersIcon";
 // const {
 //   default: EventCalendarMember,
 // } = require("@/components/icons/EventCalendarMember");
@@ -16,16 +19,35 @@ const menuNavOptions = [
     link: "/events",
   },
   {
+    name: "My Progress",
+    icon: <ProgressMember />,
+    roles: [2],
+    link: "/my-progress",
+  },
+  {
+    name: "Population",
+    icon: <PopulationIcon />,
+    roles: [1],
+    link: "/population",
+  },
+  {
+    name: "Manage users",
+    icon: <UsersIcon />,
+    roles: [1],
+    link: "/users",
+  },
+
+  {
     name: "Events",
     icon: <EventCalendarAdmin />,
     roles: [1],
     link: "/events",
   },
   {
-    name: "My Progress",
-    icon: <ProgressMember />,
-    roles: [2],
-    link: "/my-progress",
+    name: "Statistics",
+    icon: <Stats />,
+    roles: [1],
+    link: "/statistics",
   },
 ];
 

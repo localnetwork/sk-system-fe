@@ -41,3 +41,13 @@ body {
 .text-secondary {
   color: var(--secondary);
 }
+
+.border-primary {
+  border-color: var(--primary);
+}
+.border-secondary {
+  border-color: var(--secondary);
+}
+
+.admin-eventlist thead {
+}
