@@ -25,11 +25,9 @@ export default function ({ children }) {
 
   const token = cookies?.[process.env.NEXT_PUBLIC_TOKEN];
 
-  // console.log("token", token);
-
-  // if (!token && profile) {
-  //   persistentStore.setState({ profile: null });
-  // }
+  if (!token && profile) {
+    persistentStore.setState({ profile: null });
+  }
 
   return (
     <>

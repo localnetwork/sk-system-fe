@@ -6,7 +6,7 @@ import { useState } from "react";
 import AUTHAPI from "@/lib/api/auth/request";
 import { toast } from "react-toastify";
 import StatusBar from "./StatusBar";
-import Notifications from "./Notifications";
+import Notifications from "../notifications/Notifications";
 export default function Header() {
   const profile = persistentStore((state) => state.profile);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,7 +20,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-primary relative py-[15px] text-white">
+    <header className="bg-primary relative z-[201] py-[15px] text-white">
       <div className="container">
         <div className="flex justify-between items-center">
           <div className="inline-block relative">
@@ -31,6 +31,11 @@ export default function Header() {
           <div>
             <div className="flex items-center gap-[15px]">
               <span className="relative select-none ">
+                {profile?.unreadNotificationsCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-[#FF0000] text-white text-[10px] rounded-full px-[5px]">
+                    {profile?.unreadNotificationsCount}
+                  </span>
+                )}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

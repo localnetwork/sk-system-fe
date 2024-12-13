@@ -28,7 +28,7 @@ export default function RedeemForm() {
       break;
   }
   return (
-    <div className="fixed flex items-center py-[50px] top-0 left-0 w-full h-full">
+    <div className="fixed z-[1000] flex items-center py-[50px] top-0 left-0 w-full h-full">
       <span
         className="overlay bg-[#000] bg-opacity-70 absolute top-0 left-0 w-full h-full"
         onClick={() => {

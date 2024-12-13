@@ -36,7 +36,7 @@ export default function Myprogress() {
             <div
               className={`bottom-[100px] text-[20px] absolute  text-[#3FADF2]`}
             >
-              {profile?.stamps}
+              {profile?.stamps || 0}
               <span className="text-[#205388]">/{data?.length}</span>
             </div>
           )}

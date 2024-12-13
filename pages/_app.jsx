@@ -34,6 +34,7 @@ export default function App({ Component, pageProps }) {
     onError: (err) => {
       if (err?.status === 401) {
         AUTHAPI.logout().then(() => {
+          if (router.asPath == "login" || router.asPath == "/register") return;
           router.replace("/");
         });
         // globalState.setState({ sessionExpired: true });
