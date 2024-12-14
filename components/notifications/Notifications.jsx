@@ -44,7 +44,7 @@ export default function Notifications() {
 
       <div className="[&::-webkit-scrollbar]:[width:8px] [&::-webkit-scrollbar]:[background:#ccc] scrollbar [&::-webkit-scrollbar-thumb]:[cursor:col-resize] [&::-webkit-scrollbar]:[borderRadius:8px] [&::-webkit-scrollbar-thumb]:[borderRadius:8px] [&::-webkit-scrollbar-thumb]:bg-[#3FADF2] max-h-[calc(100vh-170px)] overflow-y-auto flex text-black gap-[15px] flex-col">
         {data?.data?.map((item, index) => (
-          <div className="p-[10px] bg-[#D9D9D980] rounded-[5px]">
+          <div className="p-[10px] bg-[#D9D9D980] rounded-[5px]" key={index}>
             {item?.type === "reward-claim" && (
               <RedeemClaimReward item={item} notifMutate={mutate} />
             )}

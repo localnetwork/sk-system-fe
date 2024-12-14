@@ -70,7 +70,7 @@ export default function GenerateCodeConfirmation() {
           // backToListing();
         }}
       >
-        Yes, I'm in
+        {`Yes, I'm in`}
       </button>
       <button
         className={`w-full uppercase ${

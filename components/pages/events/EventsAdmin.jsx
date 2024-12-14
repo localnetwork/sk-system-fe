@@ -68,7 +68,7 @@ export default function EventsAdmin() {
           {navOptions?.map((item, index) => {
             const isOdd = index % 2;
             return (
-              <div>
+              <div key={index}>
                 <span
                   className={`cursor-pointer inline-block ${
                     !isOdd ? "text-secondary" : "text-primary"

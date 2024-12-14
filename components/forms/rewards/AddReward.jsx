@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import "flatpickr/dist/themes/material_green.css";
 import modalState from "@/lib/store/modalState";
 import { useSWRConfig } from "swr";
+import Image from "next/image";
 
 export default function AddReward() {
   // Hooks must always be at the top level
@@ -134,10 +135,12 @@ export default function AddReward() {
             </div>
             {imagePreview && (
               <div className="absolute top-0 left-0 w-full h-full z-[100]">
-                <img
+                <Image
                   src={imagePreview}
                   alt="Preview"
                   className="w-full h-full object-cover rounded-md"
+                  width={100}
+                  height={100}
                 />
                 <button
                   type="button"

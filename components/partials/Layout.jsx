@@ -12,7 +12,7 @@ import NavigationOptions from "./NavigationOptions";
 import { parseCookies, destroyCookie } from "nookies";
 import Modal from "../popups/Modal";
 import modalState from "@/lib/store/modalState";
-export default function ({ children }) {
+export default function Layout({ children }) {
   const profile = persistentStore((state) => state.profile);
   const cookies = parseCookies();
 

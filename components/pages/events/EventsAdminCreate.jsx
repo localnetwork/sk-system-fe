@@ -5,6 +5,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import "flatpickr/dist/themes/material_green.css";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 const Flatpickr = dynamic(() => import("react-flatpickr"), { ssr: false });
 
 export default function EventsAdminCreate() {
@@ -306,10 +307,12 @@ export default function EventsAdminCreate() {
             </div>
             {imagePreview && (
               <div className="absolute z-[1000] top-0 left-0 w-full h-full">
-                <img
+                <Image
                   src={imagePreview}
                   alt="Preview"
                   className="w-full h-full  top-0 left-0 z-[100] object-cover rounded-md bg-black"
+                  width={100}
+                  height={100}
                 />
                 <button
                   type="button"

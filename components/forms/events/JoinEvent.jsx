@@ -45,7 +45,7 @@ export default function JoinEvent() {
         className={`w-full uppercase text-white hover:bg-[#135a94] min-h-[36px] flex items-center justify-center font-[500] px-[15px] py-[5px] bg-[#2991E7]`}
         onClick={submitHandler}
       >
-        Yes, I'm in
+        {`Yes, I'm in`}
       </button>
       <button
         className="w-full uppercase bg-[#227FDD] hover:bg-[#5c97d3] text-white min-h-[36px] flex items-center justify-center font-[500] px-[15px] py-[5px]"
