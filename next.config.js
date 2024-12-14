@@ -13,9 +13,20 @@ const nextConfig = {
         pathname: `/**`,
       },
       {
+        protocol: "https",
+        hostname: process.env.NEXT_PUBLIC_API_URL,
+        port: "",
+        pathname: `/**`,
+      },
+      {
         protocol: "http",
         hostname: "localhost",
         port: "1000",
+        pathname: `/**`,
+      },
+      {
+        protocol: "https",
+        hostname: "flutter-be-test.onrender.com",
         pathname: `/**`,
       },
     ],
