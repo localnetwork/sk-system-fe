@@ -7,7 +7,7 @@ export default function StatusBar() {
   const isNotVerified = profile?.verified === 0;
 
   return (
-    <div className="absolute bottom-[-35px] left-0 w-full">
+    <div className="absolute bottom-[-35px] left-0 w-full z-[-1]">
       {isPendingApproval && isNotVerified && (
         <div className="bg-red-800 text-white text-center py-[5px]">
           Your account is pending approval and not verified
