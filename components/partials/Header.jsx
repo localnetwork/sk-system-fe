@@ -7,8 +7,11 @@ import AUTHAPI from "@/lib/api/auth/request";
 import { toast } from "react-toastify";
 import StatusBar from "./StatusBar";
 import Notifications from "../notifications/Notifications";
+import { useRouter } from "next/router";
+import nookies from "nookies";
 export default function Header() {
   const profile = persistentStore((state) => state.profile);
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const [isNotifOpen, setIsNotifOpen] = useState(false);
@@ -16,7 +19,10 @@ export default function Header() {
   const logout = () => {
     toast.dismiss();
     toast.success("Logout successful");
-    AUTHAPI.logout();
+    router.push("/");
+    // AUTHAPI.logout(); // Disable for now
+    persistentStore.setState({ profile: null });
+    nookies.destroy(null, process.env.NEXT_PUBLIC_TOKEN);
   };
 
   return (
