@@ -73,7 +73,7 @@ export default function RedeemClaimReward({ item, notifMutate }) {
       <div className="max-w-[calc(100%-50px] w-full">
         {/* <strong>Menguito, Ralph</strong> has redeemed Tote Bag. */}
         <div dangerouslySetInnerHTML={{ __html: item?.body }} />
-        <div className="actions mt-[10px] gap-[15px] flex justify-end">
+        <div className="actions mt-[10px] gap-[15px] flex">
           <button
             onClick={() => {
               if (item?.status === "pending") {

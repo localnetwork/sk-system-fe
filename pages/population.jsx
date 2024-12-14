@@ -146,7 +146,7 @@ export default function Population() {
 
             {/* ACTIVE USERS */}
             <div>
-              <div className="text-[#6D2D1A] text-[13px] flex flex-col justify-center items-center rounded-[10px] px-[15px] py-[15px] shadow-md bg-[linear-gradient(180deg,_#EAB95F_0%,_#C3601C_100%)] min-w-[170px] min-h-[100px]">
+              <div className="text-[#6D2D1A] text-[13px] flex flex-col justify-center items-center rounded-[10px] px-[15px] py-[15px] shadow-md bg-[linear-gradient(180deg,#EAB75F_0%,#EAB95F_100%)] min-w-[170px] min-h-[100px]">
                 <p
                   className={`text-white text-[40px] ${plus_jakarta_sans.className}`}
                 >
