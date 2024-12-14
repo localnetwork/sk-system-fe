@@ -59,6 +59,7 @@ export default function Myprogress() {
                       src={process.env.NEXT_PUBLIC_API_URL + item?.productImage}
                       width={100}
                       height={100}
+                      alt="Hello World"
                       className="min-w-[85px] h-[77px] rounded-[20px] object-cover"
                     />
                   </div>

@@ -60,6 +60,7 @@ export default function RewardCompleted({ item, notifMutate }) {
           className="w-[40px] h-[40px] object-cover rounded-[5px]"
           width={50}
           height={50}
+          alt="Hello World"
         />
       </div>
       <div className="flex items-center gap-[5px]">

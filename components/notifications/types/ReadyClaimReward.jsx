@@ -44,6 +44,7 @@ export default function ReadyClaimReward({ item, notifMutate }) {
           className="w-[40px] h-[40px] object-cover rounded-[5px]"
           width={50}
           height={50}
+          alt="Hello WOrld"
         />
       </div>
       <div

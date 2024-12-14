@@ -67,6 +67,7 @@ export default function Reward() {
                         src={process.env.NEXT_PUBLIC_API_URL + item.image}
                         width={150}
                         height={150}
+                        alt="Hello World"
                         className="w-[100px] h-[50px] object-cover"
                       />
                     </Td>

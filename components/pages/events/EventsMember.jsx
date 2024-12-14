@@ -93,6 +93,7 @@ export default function EventsMember({ refetchEvents }) {
                 src={process.env.NEXT_PUBLIC_API_URL + item?.image}
                 width={300}
                 height={200}
+                alt="Hello World"
                 className="h-[150px] w-full rounded-[10px] object-cover"
               />
 
