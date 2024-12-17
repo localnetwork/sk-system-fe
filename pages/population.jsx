@@ -65,7 +65,7 @@ export default function Population() {
               className={`select-none ${
                 currentPurok == item?.id
                   ? "cursor-not-allowed text-white"
-                  : "cursor-pointer text-[#6D2D1A]"
+                  : "cursor-pointer text-white"
               }`}
               onClick={() => {
                 setCurrentPurok(item?.id);
@@ -79,9 +79,19 @@ export default function Population() {
 
         <div className="col-span-4 p-[30px] bg-[#F2F2F2] rounded-r-[10px]">
           <h1
-            className={`text-[#6D2D1A] border-b border-[#0000004D] pb-[10px] mb-[30px] text-[45px] ${inter.className}`}
+            className={`text-[#6D2D1A] flex items-start border-b border-[#0000004D] pb-[10px] mb-[30px] text-[45px] ${inter.className}`}
           >
             {puroks?.find((item) => item.id == currentPurok)?.name}
+
+            {puroks.find((purok) => purok.id === parseInt(currentPurok)) &&
+              currentPurok != "all" && (
+                <Link
+                  className="text-[16px] mt-2 ml-2"
+                  href={`/purok/${currentPurok}`}
+                >
+                  [Edit]
+                </Link>
+              )}
           </h1>
 
           <div

@@ -133,18 +133,18 @@ export default function EventStatsBlock() {
       </h2>
 
       <div className="filters mb-[50px] z-[1000] relative">
-        <div className="relative pr-[50px] max-w-[150px] select-none text-[#ccc] w-full p-[10px] rounded-[5px] shadow-[inset_0px_4px_4px_0px_#00000080]">
+        <div
+          className="relative pr-[50px] max-w-[150px] cursor-pointer select-none text-[#ccc] w-full p-[10px] rounded-[5px] shadow-[inset_0px_4px_4px_0px_#00000080]"
+          onClick={() => {
+            toggleDropdown();
+          }}
+        >
           <div className="text-ellipsis line-clamp-1">
             {selectedEvent?.id || eventsData?.[0]?.id
               ? selectedEvent?.id || eventsData?.[0]?.id
               : "ID"}
           </div>
-          <div
-            className="absolute cursor-pointer right-[15px] top-[50%] translate-y-[-50%]"
-            onClick={() => {
-              toggleDropdown();
-            }}
-          >
+          <div className="absolute cursor-pointer right-[15px] top-[50%] translate-y-[-50%]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

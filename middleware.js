@@ -38,6 +38,8 @@ const isMember = async (req) => {
     "/puroks",
     "/",
     "/users",
+    "/users/:id",
+    "/purok/:id",
   ]; // Restricted routes for admin users
 
   if (
@@ -62,6 +64,8 @@ const isAnonymous = async (req) => {
     "/puroks",
     "/population",
     "/users",
+    "/users/:id",
+    "/purok/:id",
   ]; // Restricted routes for anonymous users
 
   if (!decodedToken && restrictedPaths.includes(req.nextUrl.pathname)) {
@@ -100,5 +104,6 @@ export const config = {
     "/puroks",
     "/users",
     "/users/:id",
+    "/purok/:id",
   ],
 };
