@@ -20,8 +20,9 @@ export default function RegisterForm() {
   const router = useRouter();
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [birthday, setBirthday] = useState(null);
+
   const [purok, setPurok] = useState([]);
+  const [birthday, setBirthday] = useState(null);
   const calculateDateRange = () => {
     const today = new Date();
     const minDate = new Date(

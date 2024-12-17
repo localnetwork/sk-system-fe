@@ -1,6 +1,6 @@
 import BaseApi from "@/lib/api/_base.api";
 import { useEffect, useState } from "react";
-
+import CountUp from "react-countup";
 import { Inter, Plus_Jakarta_Sans, Raleway } from "next/font/google";
 
 const inter = Inter({
@@ -21,6 +21,8 @@ const raleway = Raleway({
 const fetcher = (url) => fetch(url).then((res) => res.json());
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Head from "next/head";
+
 export default function Population() {
   const router = useRouter();
 
@@ -55,8 +57,12 @@ export default function Population() {
   useEffect(() => {
     setCurrentPurok(router?.query?.purok || "all");
   }, [router?.query?.purok]);
+
   return (
     <div className="container">
+      <Head>
+        <title>Population</title>
+      </Head>
       <div className="grid p-[10px] shadow-[0px_0px_10px_0px_#00000080] rounded-[10px] grid-cols-5">
         <div className="col-span-1 uppercase flex flex-col justify-center text-center items-center text-[20px] gap-[10px] rounded-l-[10px] p-[30px] bg-[#DD8022]">
           {puroks?.map((item, index) => (
@@ -64,7 +70,7 @@ export default function Population() {
               key={index}
               className={`select-none ${
                 currentPurok == item?.id
-                  ? "cursor-not-allowed text-white"
+                  ? "cursor-not-allowed text-[#84361C]"
                   : "cursor-pointer text-white"
               }`}
               onClick={() => {
@@ -83,7 +89,7 @@ export default function Population() {
           >
             {puroks?.find((item) => item.id == currentPurok)?.name}
 
-            {puroks.find((purok) => purok.id === parseInt(currentPurok)) &&
+            {puroks.find((purok) => purok.id == currentPurok) &&
               currentPurok != "all" && (
                 <Link
                   className="text-[16px] mt-2 ml-2"
@@ -103,7 +109,11 @@ export default function Population() {
                 <p
                   className={`text-white text-[40px] ${plus_jakarta_sans.className}`}
                 >
-                  {dataPurokPopulation?.total_population?.toLocaleString()}
+                  <CountUp
+                    end={dataPurokPopulation?.total_population || 0}
+                    duration={2.5}
+                    separator=","
+                  />
                 </p>
                 Youth Population
               </div>
@@ -115,11 +125,20 @@ export default function Population() {
                 </p>
 
                 <p className="text-[18px] text-[#E59F3A]">
-                  Male: {dataPurokPopulation?.male_population?.toLocaleString()}
+                  Male:{" "}
+                  <CountUp
+                    end={dataPurokPopulation?.male_population || 0}
+                    duration={2.5}
+                    separator=","
+                  />
                 </p>
                 <p className="text-[18px] text-[#E59F3A]">
                   Female:{" "}
-                  {dataPurokPopulation?.female_population?.toLocaleString()}
+                  <CountUp
+                    end={dataPurokPopulation?.female_population || 0}
+                    duration={2.5}
+                    separator=","
+                  />
                 </p>
               </div>
             </div>
@@ -131,7 +150,11 @@ export default function Population() {
                 <p
                   className={`text-white text-[40px] ${plus_jakarta_sans.className}`}
                 >
-                  {dataPurokPopulation?.registered_users?.toLocaleString()}
+                  <CountUp
+                    end={dataPurokPopulation?.registered_users || 0}
+                    duration={2.5}
+                    separator=","
+                  />
                 </p>
                 REGISTERED USERS
               </div>
@@ -144,11 +167,19 @@ export default function Population() {
 
                 <p className="text-[18px] text-[#E59F3A]">
                   Male:{" "}
-                  {dataPurokPopulation?.male_registered_users?.toLocaleString()}
+                  <CountUp
+                    end={dataPurokPopulation?.male_registered_users || 0}
+                    duration={2.5}
+                    separator=","
+                  />
                 </p>
                 <p className="text-[18px] text-[#E59F3A]">
                   Female:{" "}
-                  {dataPurokPopulation?.female_registered_users?.toLocaleString()}
+                  <CountUp
+                    end={dataPurokPopulation?.female_registered_users || 0}
+                    duration={2.5}
+                    separator=","
+                  />
                 </p>
               </div>
             </div>
@@ -160,7 +191,11 @@ export default function Population() {
                 <p
                   className={`text-white text-[40px] ${plus_jakarta_sans.className}`}
                 >
-                  {dataPurokPopulation?.active_users?.toLocaleString()}
+                  <CountUp
+                    end={dataPurokPopulation?.active_users || 0}
+                    duration={2.5}
+                    separator=","
+                  />
                 </p>
                 ACTIVE USERS
               </div>

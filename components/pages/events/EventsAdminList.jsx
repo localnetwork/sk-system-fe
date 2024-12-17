@@ -1,5 +1,6 @@
 import BaseApi from "@/lib/api/_base.api";
 import modalState from "@/lib/store/modalState";
+import Head from "next/head";
 import { useState } from "react";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
@@ -29,6 +30,9 @@ export default function EventsAdminList() {
   ];
   return (
     <div className="mt-[50px]">
+      <Head>
+        <title>Manage Events</title>
+      </Head>
       <Table className="border border-black w-full admin-eventlist">
         <Thead className="text-left bg-[linear-gradient(360deg,_#F1D396_13.75%,_#DD8023_100%)] text-secondary">
           <Tr>

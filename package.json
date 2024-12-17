@@ -21,6 +21,7 @@
     "nookies": "^2.5.2",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
+    "react-countup": "^6.5.3",
     "react-dom": "^18",
     "react-flatpickr": "^3.10.13",
     "react-super-responsive-table": "^6.0.0",

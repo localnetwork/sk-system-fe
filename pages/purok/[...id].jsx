@@ -1,5 +1,6 @@
 import BaseApi from "@/lib/api/_base.api";
 import errorsService from "@/lib/helpers/errorsFormHandler";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
@@ -76,6 +77,9 @@ export default function Page() {
         </div>
       ) : (
         <div className="bg-[linear-gradient(180deg,_#FEF1D6_0%,_#DD8022_74.47%)] shadow-[1px_0px_11px_3px_#a3a3a3] rounded-[10px] mt-[50px] p-[50px] max-w-[620px]">
+          <Head>
+            <title>Edit Purok - {formData.name}</title>
+          </Head>
           <h1 className="mb-[20px] text-[25px] mt-[-20px] text-secondary font-bold">
             Update Purok
           </h1>

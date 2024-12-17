@@ -19,10 +19,10 @@ export default function Header() {
   const logout = () => {
     toast.dismiss();
     toast.success("Logout successful");
-    router.push("/");
-    // AUTHAPI.logout(); // Disable for now
-    persistentStore.setState({ profile: null });
-    nookies.destroy(null, process.env.NEXT_PUBLIC_TOKEN);
+    // router.push("/");
+    AUTHAPI.logout(); // Disable for now
+    // persistentStore.setState({ profile: null });
+    // nookies.destroy(null, process.env.NEXT_PUBLIC_TOKEN);
   };
 
   return (

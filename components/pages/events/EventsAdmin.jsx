@@ -5,6 +5,7 @@ import Rewards from "@/components/forms/rewards/AddReward";
 import AddReward from "@/components/forms/rewards/AddReward";
 import Reward from "@/components/forms/rewards/Rewards";
 import MilestonePage from "@/components/forms/milestones/MilestonePage";
+import Head from "next/head";
 
 export default function EventsAdmin() {
   const [selectedOption, setSelectedOption] = useState();

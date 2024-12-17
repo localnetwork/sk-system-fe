@@ -1,7 +1,9 @@
 import BaseApi from "@/lib/api/_base.api";
 import { Plus_Jakarta_Sans, Raleway } from "next/font/google";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import CountUp from "react-countup";
+
 const plus_jakarta_sans = Plus_Jakarta_Sans({
   weight: ["400", "600", "700"],
   subsets: ["latin"],
@@ -11,12 +13,21 @@ const raleway = Raleway({
   subsets: ["latin"],
 });
 const fetcher = (url) => fetch(url).then((res) => res.json());
+
 export default function PopulationBlock() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [totalPopulation, setTotalPopulation] = useState(0);
   const { data, error, isLoading, mutate } = BaseApi.swr(
     process.env.NEXT_PUBLIC_API_URL + `/api/population`,
     fetcher
   );
+
+  const getSettings = async () => {
+    const res = await BaseApi.get(
+      process.env.NEXT_PUBLIC_API_URL + `/api/settings`
+    );
+    setTotalPopulation(res?.data?.population?.total_population);
+  };
 
   const {
     data: purokData,
@@ -25,12 +36,14 @@ export default function PopulationBlock() {
     purokMutate,
   } = BaseApi.swr(process.env.NEXT_PUBLIC_API_URL + `/api/purok`, fetcher);
 
-  const totalPopulation = 6;
-
   const registeredUsersPercentage =
     (data?.registered_users / totalPopulation) * 100;
 
   const activeUsersPercentage = (data?.active_users / totalPopulation) * 100;
+
+  useEffect(() => {
+    getSettings();
+  }, []);
 
   return (
     <>
@@ -87,32 +100,43 @@ export default function PopulationBlock() {
           <div className="text-primary text-[22px]">
             Male:{" "}
             <span className="text-secondary font-[600]">
-              {data?.male_users?.toLocaleString()}
+              <CountUp
+                end={data?.male_users || 0}
+                duration={2.5}
+                separator=","
+              />
             </span>
           </div>
           <div className="text-primary text-[22px]">
             Female:{" "}
             <span className="text-secondary font-[600]">
-              {data?.female_users?.toLocaleString()}
+              <CountUp
+                end={data?.female_users || 0}
+                duration={2.5}
+                separator=","
+              />
             </span>
           </div>
           <div className="text-primary text-[22px]">
             % of registered users:{" "}
             <span className="text-secondary font-[600]">
-              {/* {registeredUsersPercentage.toFixed(2)} */}
-              {parseFloat(registeredUsersPercentage) % 1 === 0
-                ? parseInt(registeredUsersPercentage)
-                : parseFloat(registeredUsersPercentage).toFixed(2)}
-              %
+              <CountUp
+                end={registeredUsersPercentage || 0}
+                duration={2.5}
+                decimals={2}
+                suffix="%"
+              />
             </span>
           </div>
           <div className="text-primary text-[22px]">
             % of active users:{" "}
             <span className="text-secondary font-[600]">
-              {parseFloat(activeUsersPercentage) % 1 === 0
-                ? parseInt(activeUsersPercentage)
-                : parseFloat(activeUsersPercentage).toFixed(2)}
-              %
+              <CountUp
+                end={activeUsersPercentage || 0}
+                duration={2.5}
+                decimals={2}
+                suffix="%"
+              />
             </span>
           </div>
         </div>

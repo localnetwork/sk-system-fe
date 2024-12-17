@@ -1,4 +1,5 @@
 import BaseApi from "@/lib/api/_base.api";
+import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -157,6 +158,9 @@ export default function MilestonePage() {
 
   return (
     <div className="mt-[50px] flex flex-col gap-[20px]">
+      <Head>
+        <title>Milestone Settings</title>
+      </Head>
       <div className="flex gap-[15px]">
         {/* Threshold input */}
         <div className="inline-flex items-center gap-[20px]">

@@ -5,6 +5,7 @@ import persistentStore from "@/lib/store/persistentStore";
 import EventsMember from "@/components/pages/events/EventsMember";
 import EventsAdmin from "@/components/pages/events/EventsAdmin";
 import globalState from "@/lib/store/globalState";
+import Head from "next/head";
 export default function Events() {
   const profile = persistentStore((state) => state.profile);
   const ready = globalState((state) => state.ready);
@@ -13,6 +14,9 @@ export default function Events() {
 
   return (
     <div className="container">
+      <Head>
+        <title>Events</title>
+      </Head>
       {ready && role == 1 && <EventsAdmin />}
       {ready && role == 2 && <EventsMember />}
     </div>

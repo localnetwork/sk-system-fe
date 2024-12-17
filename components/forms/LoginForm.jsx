@@ -73,7 +73,7 @@ export default function LoginForm() {
                 errorsService.findError(errors, "email")
                   ? "border border-red-500"
                   : ""
-              } form-control shadow-sm px-[15px] bg-[#F1F4F8] rounded-[5px] min-h-[40px] w-full border border-[#e9e9e9]`}
+              } form-control shadow-sm px-[15px] bg-[#F1F4F8] rounded-[5px] line-clamp-1 min-h-[40px] w-full border border-[#e9e9e9]`}
             />
 
             {errorsService.findError(errors, "email") && (
@@ -94,7 +94,7 @@ export default function LoginForm() {
                 errorsService.findError(errors, "password")
                   ? "border border-red-500"
                   : ""
-              } form-control shadow-sm px-[15px] bg-[#F1F4F8] rounded-[5px] min-h-[40px] w-full border border-[#e9e9e9]`}
+              } form-control shadow-sm px-[15px] bg-[#F1F4F8] rounded-[5px] line-clamp-1 min-h-[40px] w-full border border-[#e9e9e9]`}
             />
 
             {errorsService.findError(errors, "password") && (

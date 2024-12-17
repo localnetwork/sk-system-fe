@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import "flatpickr/dist/themes/material_green.css";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import Head from "next/head";
 const Flatpickr = dynamic(() => import("react-flatpickr"), { ssr: false });
 
 export default function EventsAdminCreate() {
@@ -105,6 +106,9 @@ export default function EventsAdminCreate() {
 
   return (
     <div className="bg-[linear-gradient(180deg,_#FEF1D6_0%,_#DD8022_74.47%)] shadow-[1px_0px_11px_3px_#a3a3a3] rounded-[10px] mt-[50px] p-[50px] max-w-[620px]">
+      <Head>
+        <title>Add Event</title>
+      </Head>
       <h1 className="mb-[20px] text-[25px] mt-[-20px] text-secondary font-bold">
         Add event
       </h1>

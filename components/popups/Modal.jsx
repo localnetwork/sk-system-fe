@@ -5,6 +5,7 @@ import Message from "./types/Message";
 import RedeemForm from "./types/RedeemForm";
 import RewardForm from "./types/RewardForm";
 import RewardClaim from "../forms/rewards/RewardClaim";
+import Edit from "./types/Edit";
 export default function Modal() {
   const modalInfo = modalState((state) => state.modalInfo);
 
@@ -16,6 +17,7 @@ export default function Modal() {
       {modalInfo?.type === "redeem-code-form" && <RedeemForm />}
       {modalInfo?.type === "reward-form" && <RewardForm />}
       {modalInfo?.type === "reward-claim" && <RewardClaim />}
+      {modalInfo?.type === "edit-info" && <Edit />}
     </>
   );
 }

@@ -6,6 +6,7 @@ import "react-tooltip/dist/react-tooltip.css";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import Image from "next/image";
+import Head from "next/head";
 export default function Reward() {
   const [searchTerm, setSearchTerm] = useState("");
   const { data, error, isLoading, mutate } = BaseApi.swr(
@@ -15,6 +16,9 @@ export default function Reward() {
 
   return (
     <div className="py-[50px]">
+      <Head>
+        <title>Manage Rewards</title>
+      </Head>
       <button
         className="bg-secondary text-white px-[20px] py-[10px] rounded-md"
         onClick={() => {
