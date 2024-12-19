@@ -98,7 +98,7 @@ export default function RegisterForm() {
     fetchPurok();
   }, []);
   return (
-    <div className="min-h-screen py-[50px] bg-[linear-gradient(180deg,#2163AC_0%,#227FDD_14.9%,#95DDFB_35.9%,#F1D496_61.4%,#DD8022_100%)] flex items-center justify-center flex-col relative">
+    <div className="min-h-screen p-[50px] bg-[linear-gradient(180deg,#2163AC_0%,#227FDD_14.9%,#95DDFB_35.9%,#F1D496_61.4%,#DD8022_100%)] flex items-center justify-center flex-col relative">
       {/* <span className="h-[50%] absolute bg-[#FFE4C8] w-full top-0" />
       <span className="h-[50%] absolute bg-[#FF9000] w-full bottom-0" /> */}
       <div className="max-w-[700px] mx-auto mb-[50px]">
@@ -130,7 +130,7 @@ export default function RegisterForm() {
                 name="email"
                 id="email"
                 placeholder="Email"
-                className="form-control max-w-[325px] shadow-sm px-[5px] bg-[#D9D9D9] rounded-[5px] min-h-[40px] w-full"
+                className="form-control lg:max-w-[325px] shadow-sm px-[5px] bg-[#D9D9D9] rounded-[5px] min-h-[40px] w-full"
               />
               {errorsService.findError(errors, "email") && (
                 <p className="mt-2 text-red-500 text-xs">
@@ -138,7 +138,7 @@ export default function RegisterForm() {
                 </p>
               )}
             </div>
-            <div className="flex max-w-[50%] w-full px-[5px] flex-col gap-[5px]">
+            <div className="flex lg:max-w-[50%] w-full px-[5px] flex-col gap-[5px]">
               {/* <label htmlFor="password" className="font-bold">
                 Password:
               </label> */}
@@ -147,7 +147,7 @@ export default function RegisterForm() {
                 name="password"
                 id="password"
                 placeholder="Password"
-                className="form-control max-w-[267px] shadow-sm px-[5px] bg-[#D9D9D9] rounded-[5px] min-h-[40px] w-full"
+                className="form-control lg:max-w-[267px] shadow-sm px-[5px] bg-[#D9D9D9] rounded-[5px] min-h-[40px] w-full"
               />
               {errorsService.findError(errors, "password") && (
                 <p className="mt-2 text-red-500 text-xs">
@@ -155,7 +155,7 @@ export default function RegisterForm() {
                 </p>
               )}
             </div>
-            <div className="flex max-w-[50%] w-full px-[5px] flex-col gap-[5px]">
+            <div className="flex lg:max-w-[50%] w-full px-[5px] flex-col gap-[5px]">
               {/* <label htmlFor="confirm_password" className="font-bold">
                 Re-enter Password:
               </label> */}
@@ -164,7 +164,7 @@ export default function RegisterForm() {
                 name="confirm_password"
                 id="confirm_password"
                 placeholder="Re-enter Password"
-                className="form-control max-w-[267px] shadow-sm px-[5px] bg-[#D9D9D9] rounded-[5px] min-h-[40px] w-full"
+                className="form-control lg:max-w-[267px] shadow-sm px-[5px] bg-[#D9D9D9] rounded-[5px] min-h-[40px] w-full"
               />
               {errorsService.findError(errors, "confirm_password") && (
                 <p className="mt-2 text-red-500 text-xs">
@@ -177,11 +177,11 @@ export default function RegisterForm() {
             </div>
           </div>
 
-          <div className="flex mx-[-5px]  flex-wrap w-full">
+          <div className="flex gap-[15px] lg:gap-0 flex-col lg:flex-row mx-[-5px]  flex-wrap w-full">
             <div className="px-[5px] w-full">
               <div className="w-full border-t-[1px] border-[#ccc] block h-[1px] mb-6" />
             </div>
-            <div className="flex max-w-[33.33%] w-full px-[5px] flex-col gap-[5px]  ">
+            <div className="flex lg:max-w-[33.33%] w-full px-[5px] flex-col gap-[5px]  ">
               {/* <label htmlFor="first_name" className="font-bold">
                 First Name:
               </label> */}
@@ -198,7 +198,7 @@ export default function RegisterForm() {
                 </p>
               )}
             </div>
-            <div className="flex max-w-[33.33%] w-full px-[5px] flex-col gap-[5px]">
+            <div className="flex lg:max-w-[33.33%] w-full px-[5px] flex-col gap-[5px]">
               {/* <label htmlFor="middle_name" className="font-bold">
                 Middle Name:
               </label> */}
@@ -215,7 +215,7 @@ export default function RegisterForm() {
                 </p>
               )}
             </div>
-            <div className="flex max-w-[33.33%] w-full px-[5px] flex-col gap-[5px]">
+            <div className="flex lg:max-w-[33.33%] w-full px-[5px] flex-col gap-[5px]">
               {/* <label htmlFor="last_name" className="font-bold">
                 Last Name:
               </label> */}
@@ -233,7 +233,7 @@ export default function RegisterForm() {
               )}
             </div>
           </div>
-          <div className="flex mx-[-5px] gap-y-6 w-full">
+          <div className="flex flex-col lg:flex-row mx-[-5px] gap-y-6 w-full">
             <div className="flex grow w-full min-w-[40%] px-[5px] flex-col gap-[5px]">
               {/* <label htmlFor="birthday" className="font-bold">
               Birthday:
@@ -324,7 +324,7 @@ export default function RegisterForm() {
             <div className="flex w-full justify-center">
               <button
                 type="submit"
-                className={`bg-gradient1 shadow-[0_4px_6px_rgba(0,0,0,0.35)] inline-flex justify-center gap-[15px] font-bold text-white px-[5px] py-[15px] rounded-[50px] min-w-[250px] ${
+                className={`bg-gradient1 shadow-[0_4px_6px_rgba(0,0,0,0.35)] inline-flex justify-center gap-[15px] font-bold text-white px-[5px] py-[15px] rounded-[50px] w-full max-w-[250px] ${
                   isLoading ? "opacity-80 pointer-events-none" : ""
                 } `}
               >

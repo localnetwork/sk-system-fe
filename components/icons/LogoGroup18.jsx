@@ -6,6 +6,7 @@ export default function LogoGroup18() {
       viewBox="0 0 254 197"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-full"
     >
       <g filter="url(#filter0_d_699_784)">
         <path

@@ -45,7 +45,7 @@ export default function LoginForm() {
 
   useEffect(() => {}, []);
   return (
-    <div className="min-h-screen py-[100px] flex items-center justify-center flex-col relative">
+    <div className="min-h-screen py-[30px] md:py-[50px] lg:py-[100px] flex items-center justify-center flex-col relative">
       {/* <span className="h-[50%] absolute bg-[#FFE4C8] w-full top-0" />
       <span className="h-[50%] absolute bg-[#FF9000] w-full bottom-0" /> */}
 
