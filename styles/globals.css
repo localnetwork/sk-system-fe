@@ -51,3 +51,7 @@ body {
 
 .admin-eventlist thead {
 }
+
+.responsiveTable tbody tr {
+  @apply border !border-[#ccc];
+}

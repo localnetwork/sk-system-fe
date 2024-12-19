@@ -134,7 +134,7 @@ export default function EventStatsBlock() {
 
       <div className="filters mb-[50px] z-[1000] relative">
         <div
-          className="relative pr-[50px] max-w-[150px] cursor-pointer select-none text-[#ccc] w-full p-[10px] rounded-[5px] shadow-[inset_0px_4px_4px_0px_#00000080]"
+          className="relative pr-[50px] lg:max-w-[150px] cursor-pointer select-none text-[#ccc] w-full p-[10px] rounded-[5px] shadow-[inset_0px_4px_4px_0px_#00000080]"
           onClick={() => {
             toggleDropdown();
           }}
@@ -161,7 +161,7 @@ export default function EventStatsBlock() {
             </svg>
           </div>
           {dropdownOpen && (
-            <div className="absolute text-[#333] left-[calc(100%+10px)] p-[10px] bg-white shadow-[0px_0px_10px_0px_#00000080] rounded-[10px] top-0 w-full">
+            <div className="absolute text-[#333] left-0 lg:left-[calc(100%+10px)] p-[10px] bg-white shadow-[0px_0px_10px_0px_#00000080] rounded-[10px] top-[100%] lg:top-0 w-full">
               {eventsData?.map((event, index) => (
                 <div
                   key={index}
@@ -180,7 +180,7 @@ export default function EventStatsBlock() {
       </div>
 
       <div className="flex flex-col gap-[8px]">
-        <div className="text-secondary flex gap-x-[15px] text-[22px]">
+        <div className="text-secondary flex gap-x-[15px] text-[13px] sm:text-[18px] md:text-[20px] lg:text-[22px]">
           <span className="text-[#A2441B]">
             Total Participants:{" "}
             <span className="text-[#6D2E1A]">
@@ -194,7 +194,7 @@ export default function EventStatsBlock() {
             % of Registered Users
           </span>
         </div>
-        <div className="text-secondary flex gap-x-[15px] text-[22px]">
+        <div className="text-secondary flex gap-x-[15px] text-[13px] sm:text-[18px] md:text-[20px] lg:text-[22px]">
           <span className="text-[#A2441B]">
             Partial Participants:{" "}
             <span className="text-[#6D2E1A]">
@@ -208,7 +208,7 @@ export default function EventStatsBlock() {
             % of Total Participants
           </span>
         </div>
-        <div className="text-secondary flex gap-x-[15px] text-[22px]">
+        <div className="text-secondary flex gap-x-[15px] text-[13px] sm:text-[18px] md:text-[20px] lg:text-[22px]">
           <span className="text-[#A2441B]">
             Final Participants:{" "}
             <span className="text-[#6D2E1A]">
@@ -227,8 +227,10 @@ export default function EventStatsBlock() {
           <div className="max-w-[50%] w-full">
             {data?.eventInfo?.male_participants === 0 &&
             data?.eventInfo?.female_participants === 0 ? (
-              <div className="min-h-[320px] text-[20px] max-h-[413px] max-w-[413px] rounded-full w-fit-content bg-[#ddd] text-[#a7a7a7] flex items-center justify-center">
-                No data to show
+              <div className="pb-[100%] relative text-[20px] rounded-full w-fit-content bg-[#ddd] text-[#a7a7a7] flex items-center justify-center">
+                <span className="absolute top-[50%] translate-y-[-50%]">
+                  No Data
+                </span>
               </div>
             ) : (
               <Pie data={chartData} options={options} />

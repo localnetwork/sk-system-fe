@@ -2,6 +2,7 @@ import BaseApi from "@/lib/api/_base.api";
 import modalState from "@/lib/store/modalState";
 import persistentStore from "@/lib/store/persistentStore";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 export default function Myprogress() {
   const profile = persistentStore((state) => state.profile);
@@ -10,14 +11,51 @@ export default function Myprogress() {
     process.env.NEXT_PUBLIC_API_URL + `/api/milestones/thresholds`,
     fetcher
   );
+  const [itemsCount, setItemsCount] = useState(0);
 
   const getTaskPercentage = (profile?.stamps / data?.length) * 100;
 
-  const getWithPercentage = (data?.length / 7) * 100;
+  const getWithPercentage = (data?.length / itemsCount) * 100;
+
+  useEffect(() => {
+    // Define the event handler
+    const resizeMiletones = () => {
+      console.log("window", window.innerWidth);
+      const breakpoints = {
+        575: 2,
+        767: 4,
+        991: 5,
+        default: 7,
+      };
+
+      setItemsCount(
+        window.innerWidth <= 575
+          ? breakpoints[575]
+          : window.innerWidth <= 767
+          ? breakpoints[767]
+          : window.innerWidth <= 991
+          ? breakpoints[991]
+          : breakpoints.default
+      );
+    };
+
+    resizeMiletones();
+    // Add event listeners
+    window.addEventListener("resize", resizeMiletones);
+    window.addEventListener("load", resizeMiletones);
+    document.addEventListener("DOMContentLoaded", resizeMiletones);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener("resize", resizeMiletones);
+      window.removeEventListener("load", resizeMiletones);
+      document.removeEventListener("DOMContentLoaded", resizeMiletones);
+    };
+  }, []); // Empty dependency array means this runs once on mount and cleanup on unmount
 
   return (
     <div className="container">
-      <div className="p-[50px] shadow-[0px_0px_10px_0px_#00000080] rounded-[10px]">
+      <div className="p-[30px] md:p-[50px] shadow-[0px_0px_10px_0px_#00000080] rounded-[10px]">
         <p className="text-secondary text-[20px]">
           You have attended{" "}
           <span className="text-[#227FDD] text-[30px]">
@@ -29,7 +67,7 @@ export default function Myprogress() {
 
         <div
           className={`${
-            data?.length > 7 ? "overflow-x-auto" : "overflow-x-hidden"
+            data?.length > itemsCount ? "overflow-x-auto" : "overflow-x-hidden"
           } rewards relative [transition:all_ease_.3s] pt-[150px] pb-[10px] mb-[50px] w-full [&::-webkit-scrollbar]:[width:8px] [&::-webkit-scrollbar]:[background:#ccc] scrollbar [&::-webkit-scrollbar-thumb]:[cursor:col-resize] [&::-webkit-scrollbar]:[borderRadius:8px] [&::-webkit-scrollbar-thumb]:[borderRadius:8px] [&::-webkit-scrollbar-thumb]:bg-[#3FADF2]`}
         >
           {!data?.[0]?.productImage && (
@@ -80,7 +118,7 @@ export default function Myprogress() {
           </div>
         </div>
 
-        <div className="flex justify-between gap-[15px] mt-[50px]">
+        <div className="flex flex-wrap flex-col md:flex-row justify-between gap-[15px] mt-[50px]">
           <button
             onClick={() => {
               modalState.setState({

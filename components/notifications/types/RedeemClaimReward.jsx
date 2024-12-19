@@ -61,7 +61,7 @@ export default function RedeemClaimReward({ item, notifMutate }) {
   };
 
   return (
-    <div className="flex text-[11px] gap-[15px] items-center">
+    <div className="flex flex-col md:flex-row text-[11px] gap-[15px] items-center">
       <div className="min-w-[50px] max-w-[50px] p-[5px] rounded-[10px] bg-[linear-gradient(0deg,_#DD8023,_#DD8023),_linear-gradient(0deg,_#DD8023,_#DD8023),_linear-gradient(0deg,_#DD8023,_#DD8023),_linear-gradient(0deg,_#DD8023,_#DD8023)]">
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + additional_info?.reward?.image}
@@ -71,10 +71,13 @@ export default function RedeemClaimReward({ item, notifMutate }) {
           alt="Hello World"
         />
       </div>
-      <div className="max-w-[calc(100%-50px] w-full">
+      <div className="md:max-w-[calc(100%-50px] w-full">
         {/* <strong>Menguito, Ralph</strong> has redeemed Tote Bag. */}
-        <div dangerouslySetInnerHTML={{ __html: item?.body }} />
-        <div className="actions mt-[10px] gap-[15px] flex">
+        <div
+          className="text-center md:text-left"
+          dangerouslySetInnerHTML={{ __html: item?.body }}
+        />
+        <div className="actions mt-[10px] gap-[15px] flex flex-col md:flex-row">
           <button
             onClick={() => {
               if (item?.status === "pending") {

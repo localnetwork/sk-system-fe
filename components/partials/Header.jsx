@@ -2,35 +2,64 @@ import LogoWhiteSmall from "../icons/LogoWhiteSmall";
 import persistentStore from "@/lib/store/persistentStore";
 import UserSquare from "../icons/UserSquare";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import AUTHAPI from "@/lib/api/auth/request";
 import { toast } from "react-toastify";
 import StatusBar from "./StatusBar";
 import Notifications from "../notifications/Notifications";
 import { useRouter } from "next/router";
 import nookies from "nookies";
+
 export default function Header() {
   const profile = persistentStore((state) => state.profile);
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const [isNotifOpen, setIsNotifOpen] = useState(false);
+  const headerRef = useRef(null);
 
   const logout = () => {
     toast.dismiss();
     toast.success("Logout successful");
-    // router.push("/");
-    AUTHAPI.logout(); // Disable for now
-    // persistentStore.setState({ profile: null });
-    // nookies.destroy(null, process.env.NEXT_PUBLIC_TOKEN);
+    AUTHAPI.logout();
   };
 
+  useEffect(() => {
+    if (isNotifOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isNotifOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (headerRef.current && !headerRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+        setIsNotifOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [headerRef]);
+
   return (
-    <header className="bg-primary relative z-[201] py-[15px] text-white">
+    <header
+      ref={headerRef}
+      className="bg-primary relative z-[201] py-[15px] text-white"
+    >
       <div className="container">
         <div className="flex justify-between items-center">
           <div className="inline-block relative">
-            <Link href="/">
+            <Link
+              href="/"
+              onClick={() => {
+                setIsMenuOpen(false);
+                setIsNotifOpen(false);
+              }}
+            >
               <LogoWhiteSmall />
             </Link>
           </div>

@@ -161,7 +161,7 @@ export default function MilestonePage() {
       <Head>
         <title>Milestone Settings</title>
       </Head>
-      <div className="flex gap-[15px]">
+      <div className="flex flex-wrap gap-[15px]">
         {/* Threshold input */}
         <div className="inline-flex items-center gap-[20px]">
           REWARD THRESHOLD:

@@ -27,6 +27,7 @@ export default function Population() {
   const router = useRouter();
 
   const [currentPurok, setCurrentPurok] = useState();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { data, error, isLoading, mutate } = BaseApi.swr(
     process.env.NEXT_PUBLIC_API_URL + `/api/purok`,
     fetcher
@@ -63,8 +64,40 @@ export default function Population() {
       <Head>
         <title>Population</title>
       </Head>
-      <div className="grid p-[10px] shadow-[0px_0px_10px_0px_#00000080] rounded-[10px] grid-cols-5">
-        <div className="col-span-1 uppercase flex flex-col justify-center text-center items-center text-[20px] gap-[10px] rounded-l-[10px] p-[30px] bg-[#DD8022]">
+      <div className="grid p-[10px] shadow-[0px_0px_10px_0px_#00000080] rounded-[10px] grid-cols-1 md:grid-cols-5">
+        {/* Dropdown for small screens */}
+        <div className="col-span-1 uppercase flex flex-col justify-center text-center items-center text-[20px] gap-[10px] rounded-[10px] py-[10px] px-[30px] bg-[#DD8022] md:hidden">
+          <button
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="block w-full text-white text-[18px] cursor-pointer"
+          >
+            Select Purok
+          </button>
+          {isDropdownOpen && (
+            <div className="mt-2 p-2 bg-white shadow-md rounded-lg">
+              {puroks?.map((item, index) => (
+                <div
+                  key={index}
+                  className={`select-none p-2 cursor-pointer ${
+                    currentPurok == item?.id
+                      ? "bg-[#84361C] text-white"
+                      : "text-[#000]"
+                  }`}
+                  onClick={() => {
+                    setCurrentPurok(item?.id);
+                    router.push(`/population?purok=${item?.id}`);
+                    setIsDropdownOpen(false);
+                  }}
+                >
+                  {item.name}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Sidebar for larger screens */}
+        <div className="col-span-1 uppercase hidden md:flex flex-col justify-center text-center items-center text-[20px] gap-[10px] rounded-l-[10px] p-[30px] bg-[#DD8022]">
           {puroks?.map((item, index) => (
             <div
               key={index}
@@ -85,7 +118,7 @@ export default function Population() {
 
         <div className="col-span-4 p-[30px] bg-[#F2F2F2] rounded-r-[10px]">
           <h1
-            className={`text-[#6D2D1A] flex items-start border-b border-[#0000004D] pb-[10px] mb-[30px] text-[45px] ${inter.className}`}
+            className={`text-[#6D2D1A] flex items-start border-b border-[#0000004D] pb-[10px] mb-[30px] text-[30px] md:text-[35px] lg:text-[45px] ${inter.className}`}
           >
             {puroks?.find((item) => item.id == currentPurok)?.name}
 
@@ -101,7 +134,7 @@ export default function Population() {
           </h1>
 
           <div
-            className={`flex justify-center gap-[100px] flex-wrap ${raleway.className}`}
+            className={`flex justify-center gap-[15px] sm:gap-[30px] md:gap-[20px] lg:gap-[50px] xl:gap-[100px] flex-wrap ${raleway.className}`}
           >
             {/* YOUTH POPULATION */}
             <div>
@@ -187,7 +220,7 @@ export default function Population() {
 
             {/* ACTIVE USERS */}
             <div>
-              <div className="text-[#6D2D1A] text-[13px] flex flex-col justify-center items-center rounded-[10px] px-[15px] py-[15px] shadow-md bg-[linear-gradient(180deg,#EAB75F_0%,#EAB95F_100%)] min-w-[170px] min-h-[100px]">
+              <div className="text-[#6D2D1A] text-[13px] flex flex-col justify-center items-center rounded-[10px] px-[15px] py-[15px] shadow-md bg-[linear-gradient(180deg,#EAB75F_0%,#EAB75F_100%)] min-w-[170px] min-h-[100px]">
                 <p
                   className={`text-white text-[40px] ${plus_jakarta_sans.className}`}
                 >
@@ -203,7 +236,7 @@ export default function Population() {
             {/* END ACTIVE USERS */}
           </div>
 
-          <div className="grow px-[50px] text-[#C3601C] mt-[50px] pt-[15px] border-t border-[#0000004D]">
+          <div className="grow lg:px-[50px] text-[#C3601C] mt-[50px] pt-[15px] border-t border-[#0000004D]">
             <Link href={`/users?purok=${currentPurok}`}>View Users List</Link>
           </div>
         </div>

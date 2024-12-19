@@ -18,7 +18,7 @@ export default function Notifications() {
 
   return (
     <div
-      className={`absolute text-black rounded-[10px] right-0 top-[calc(100%+30px)] pt-[10px] pb-[30px] px-[15px] border min-w-[340px] bg-white shadow-[0px_0px_5px_0px_#00000066] ${raleway.className}`}
+      className={`fixed lg:absolute text-black lg:rounded-[10px] right-0 top-[78px] lg:top-[calc(100%+30px)] pt-[10px] pb-[30px] px-[15px] lg:border min-w-full lg:min-w-[340px] bg-white lg:shadow-[0px_0px_5px_0px_#00000066] ${raleway.className}`}
     >
       <h2 className=" font-bold text-[20px] mb-[10px]">Notifications</h2>
       {data?.data?.length == 0 && (
@@ -42,7 +42,7 @@ export default function Notifications() {
         </div>
       )}
 
-      <div className="[&::-webkit-scrollbar]:[width:8px] [&::-webkit-scrollbar]:[background:#ccc] scrollbar [&::-webkit-scrollbar-thumb]:[cursor:col-resize] [&::-webkit-scrollbar]:[borderRadius:8px] [&::-webkit-scrollbar-thumb]:[borderRadius:8px] [&::-webkit-scrollbar-thumb]:bg-[#3FADF2] max-h-[calc(100vh-170px)] overflow-y-auto flex text-black gap-[15px] flex-col">
+      <div className="[&::-webkit-scrollbar]:[width:8px] [&::-webkit-scrollbar]:[background:#ccc] scrollbar [&::-webkit-scrollbar-thumb]:[cursor:col-resize] [&::-webkit-scrollbar]:[borderRadius:8px] [&::-webkit-scrollbar-thumb]:[borderRadius:8px] [&::-webkit-scrollbar-thumb]:bg-[#3FADF2] max-h-[calc(100vh-130px)] lg:max-h-[calc(100vh-170px)] overflow-y-auto flex text-black gap-[15px] flex-col">
         {data?.data?.map((item, index) => (
           <div className="p-[10px] bg-[#D9D9D980] rounded-[5px]" key={index}>
             {item?.type === "reward-claim" && (

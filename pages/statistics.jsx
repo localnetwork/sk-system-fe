@@ -5,11 +5,11 @@ export default function Statistics() {
   return (
     <div className="container">
       <div className="p-[20px] shadow-[0px_0px_10px_0px_#00000080] rounded-[15px]">
-        <div className="grid gap-[30px] grid-cols-3">
-          <div className="col-span-1 relative z-[2000]">
+        <div className="grid gap-[30px] lg:grid-cols-3">
+          <div className="lg:col-span-1 relative z-[2000]">
             <PopulationBlock />
           </div>
-          <div className="col-span-2">
+          <div className="lg:col-span-2">
             <EventStatsBlock />
           </div>
         </div>

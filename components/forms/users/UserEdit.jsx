@@ -69,6 +69,44 @@ export default function UserEdit() {
     return `${year}-${month}-${day}`;
   };
 
+  const handleArchive = async () => {
+    toast.dismiss();
+    try {
+      const response = await BaseApi.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/user/${modalInfo?.item?.id}/archive`
+      );
+      console.log("response", response);
+      mutate(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/user/${modalInfo?.item?.id}`
+      );
+      usersMutate(`${process.env.NEXT_PUBLIC_API_URL}/api/users`);
+      modalState.setState({ modalInfo: null });
+      toast.success("User archived successfully");
+    } catch (error) {
+      console.log("error", error);
+      toast.error(error?.data?.message);
+    }
+  };
+
+  const handleUnarchive = async () => {
+    toast.dismiss();
+    try {
+      const response = await BaseApi.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/user/${modalInfo?.item?.id}/unarchive`
+      );
+      console.log("response", response);
+      mutate(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/user/${modalInfo?.item?.id}`
+      );
+      usersMutate(`${process.env.NEXT_PUBLIC_API_URL}/api/users`);
+      modalState.setState({ modalInfo: null });
+      toast.success("User activated successfully");
+    } catch (error) {
+      console.log("error", error);
+      toast.error(error?.data?.message);
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -126,14 +164,14 @@ export default function UserEdit() {
       >
         <div className="groups">
           <h2
-            className={`text-[#6D2E1A] mb-[20px] text-left text-[22px] font-[500] ${inter.className}`}
+            className={`text-[#6D2E1A] mb-[20px] text-left text-[18px] lg:text-[22px] font-[500] ${inter.className}`}
           >
             ACCOUNT DATA OR INFORMATION
           </h2>
           <div className="form-item flex gap-[10px] flex-col">
             <label
               htmlFor="email"
-              className={` text-[#A2441B] text-[22px] ${inter.className}`}
+              className={` text-[#A2441B] text-[15px] md:text-[18px] lg:text-[22px] mb-[5px] ${inter.className}`}
             >
               Email
             </label>
@@ -149,33 +187,35 @@ export default function UserEdit() {
         </div>
         <div className="groups">
           <h2
-            className={`text-[#6D2E1A] mb-[20px] text-left text-[22px] font-[500] ${inter.className}`}
+            className={`text-[#6D2E1A] mb-[20px] text-left text-[18px] lg:text-[22px] font-[500] ${inter.className}`}
           >
             PERSONAL DATA OR INFORMATION
           </h2>
           <div className="form-item flex gap-[10px] flex-col">
             <label
               htmlFor="fullname"
-              className={` text-[#A2441B] text-[22px] ${inter.className}`}
+              className={` text-[#A2441B] text-[15px] md:text-[18px] lg:text-[22px] mb-[5px] ${inter.className}`}
             >
               Fullname
             </label>
-            <div className="grid gap-[15px] grid-cols-4">
-              <div className="col-span-2">
+            <div className="grid gap-[15px] sm:grid-cols-4">
+              <div className="sm:col-span-2">
                 <input
                   type="text"
                   id="last_name"
                   name="last_name"
                   value={formData.last_name}
+                  placeholder="Last Name"
                   onChange={handleChange}
                   className="min-h-[45px] w-full outline-none border shadow-[0px_0px_10px_0px_#00000080] py-[5px] px-[10px] rounded-[10px]"
                 />
               </div>
-              <div className="col-span-1">
+              <div className="sm:col-span-1">
                 <input
                   type="text"
                   id="first_name"
                   name="first_name"
+                  placeholder="First Name"
                   value={formData.first_name}
                   onChange={handleChange}
                   className="min-h-[45px] w-full outline-none border shadow-[0px_0px_10px_0px_#00000080] py-[5px] px-[10px] rounded-[10px]"
@@ -187,6 +227,7 @@ export default function UserEdit() {
                   id="middle_name"
                   name="middle_name"
                   value={formData.middle_name}
+                  placeholder="Middle Name"
                   onChange={handleChange}
                   className="min-h-[45px] w-full outline-none border shadow-[0px_0px_10px_0px_#00000080] py-[5px] px-[10px] rounded-[10px]"
                 />
@@ -194,11 +235,11 @@ export default function UserEdit() {
             </div>
           </div>
         </div>
-        <div className="grid gap-[15px] grid-cols-3">
+        <div className="grid gap-[15px] md:grid-cols-3">
           <div className="form-item col-span-1">
             <label
               htmlFor="birthday"
-              className={` text-[#A2441B] text-[22px] ${inter.className}`}
+              className={` text-[#A2441B] text-[15px] md:text-[18px] lg:text-[22px] mb-[5px] ${inter.className}`}
             >
               Date of Birth:
             </label>
@@ -235,7 +276,7 @@ export default function UserEdit() {
           <div className="form-item flex flex-col col-span-1">
             <label
               htmlFor="gender"
-              className={` text-[#A2441B] text-[22px] ${inter.className}`}
+              className={` text-[#A2441B] text-[15px] md:text-[18px] lg:text-[22px] mb-[5px] ${inter.className}`}
             >
               Gender:
             </label>
@@ -250,16 +291,15 @@ export default function UserEdit() {
               <option value="2">Female</option>
             </select>
           </div>
-          {console.log("purokData", purokData)}
           <div className="form-item flex flex-col col-span-1">
             <label
-              htmlFor="purok"
-              className={` text-[#A2441B] text-[22px] ${inter.className}`}
+              htmlFor="purokSelection"
+              className={` text-[#A2441B] text-[15px] md:text-[18px] lg:text-[22px] mb-[5px] ${inter.className}`}
             >
               Purok:
             </label>
             <select
-              id="purok"
+              id="purokSelection"
               name="purok"
               value={formData.purok}
               onChange={handleChange}
@@ -275,6 +315,30 @@ export default function UserEdit() {
         </div>
 
         <div className="flex gap-[15px] mt-[30px] justify-end">
+          {modalInfo?.item?.role == 2 && (
+            <>
+              {modalInfo?.item?.status === 0 ? (
+                <div
+                  onClick={() => {
+                    handleUnarchive();
+                  }}
+                  className="cursor-pointer bg-[linear-gradient(180deg,#F1D396_0%,#DD8022_100%)] px-[30px] py-[15px] rounded-[10px] text-white"
+                >
+                  Unarchive
+                </div>
+              ) : (
+                <div
+                  onClick={() => {
+                    handleArchive();
+                  }}
+                  className="cursor-pointer bg-[linear-gradient(180deg,#F1D396_0%,#DD8022_100%)] px-[30px] py-[15px] rounded-[10px] text-white"
+                >
+                  Archive
+                </div>
+              )}
+            </>
+          )}
+
           <button
             type="submit"
             className="bg-[linear-gradient(180deg,#F1D396_0%,#DD8022_100%)] px-[30px] py-[15px] rounded-[10px] text-white"

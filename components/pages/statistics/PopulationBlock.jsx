@@ -54,7 +54,7 @@ export default function PopulationBlock() {
       </h2>
 
       <div
-        className={`max-w-[350px] flex flex-col w-full gap-[15px] ${raleway.className}`}
+        className={`lg:max-w-[350px] flex flex-col w-full gap-[15px] ${raleway.className}`}
       >
         <div className="flex z-[200] items-center gap-[15px] relative">
           <div className="select-none text-[#ccc] w-full p-[10px] rounded-[5px] shadow-[inset_0px_4px_4px_0px_#00000080]">

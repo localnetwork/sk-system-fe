@@ -56,7 +56,7 @@ export default function EventsMember({ refetchEvents }) {
 
   return (
     <>
-      <div className="shadow-md border p-[50px] rounded-[15px]">
+      <div className="shadow-md border p-[30px] md:p-[50px] rounded-[15px]">
         <div className="flex   mb-[15px] justify-between items-center">
           {statuses.map((item, index) => (
             <div
@@ -83,12 +83,9 @@ export default function EventsMember({ refetchEvents }) {
           </div>
         )}
 
-        <div className="flex flex-wrap">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[15px]">
           {data?.map((item, index) => (
-            <div
-              key={index}
-              className="text-primary px-[15px] mb-[30px] max-w-[33.33%] w-full"
-            >
+            <div key={index} className="text-primary mb-[30px] w-full">
               <Image
                 src={process.env.NEXT_PUBLIC_API_URL + item?.image}
                 width={300}
