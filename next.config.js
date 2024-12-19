@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   experimental: {
-    middlewarePrefetch: true,
+    middlewarePrefetch: "strict",
   },
   images: {
     remotePatterns: [
