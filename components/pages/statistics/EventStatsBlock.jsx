@@ -236,7 +236,7 @@ export default function EventStatsBlock() {
               <Pie data={chartData} options={options} />
             )}
           </div>
-          <div className="labels text-[22px]">
+          <div className="labels text-[16px] md:text-[20px] lg:text-[22px]">
             <p className="text-[#C90000]">
               Male Participants:{" "}
               {data?.eventInfo?.male_participants?.toLocaleString()}
